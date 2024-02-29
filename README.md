@@ -34,6 +34,9 @@ To get this application up and running, follow these steps:
     ```
     bundle exec rspec
     ```
+6. **Admin Login**
+
+    You can visit the admin page by clicking `Login` in the top-left corner.  The database is seeded with an admin, username is `admin@admin.com` and password is `password`.
 
 ## Thoughts and Challenges
 
