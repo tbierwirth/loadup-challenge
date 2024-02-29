@@ -19,7 +19,7 @@ RSpec.feature "Bookings", type: :feature do
   scenario 'User attempts to create an invalid booking' do
     visit '/'
 
-    fill_in 'First Name', with: 'Tyler'
+    fill_in 'First Name', with: ''
     fill_in 'Last Name', with: 'Bierwirth'
     fill_in 'Animal Name', with: 'Luna'
     select 'Cat', from: 'Animal Type'
@@ -28,6 +28,7 @@ RSpec.feature "Bookings", type: :feature do
 
     click_button 'Book Now'
 
+    expect(page).to have_text("First Name can't be blank")
     expect(page).to have_text('Hours Requested must be less than or equal to 8')
   end
 

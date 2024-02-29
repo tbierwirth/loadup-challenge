@@ -62,4 +62,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Warden (Devise) config
+  config.include Warden::Test::Helpers
+  config.after(:each) do
+    Warden.test_reset!
+  end
 end
+
