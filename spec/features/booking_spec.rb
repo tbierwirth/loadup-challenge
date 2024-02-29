@@ -28,6 +28,12 @@ RSpec.feature "Bookings", type: :feature do
 
     click_button 'Book Now'
 
-    expect(page).to have_text('Hours requested must be less than or equal to 8')
+    expect(page).to have_text('Hours Requested must be less than or equal to 8')
+  end
+
+  scenario 'Non-admin user attempts to view all bookings' do
+    visit '/bookings'
+
+    expect(page).to have_text('You need to sign in or sign up before continuing.')
   end
 end
