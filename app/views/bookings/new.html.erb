@@ -1,0 +1,39 @@
+<h1>New Booking</h1>
+
+<%= form_with model: @booking, local: true do |form| %>
+  <div>
+    <%= form.label :first_name, "First Name" %><br>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, "Last Name" %><br>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :animal_name, "Animal Name" %><br>
+    <%= form.text_field :animal_name %>
+  </div>
+
+  <div>
+    <%= form.label :animal_type, "Animal Type" %><br>
+    <%= form.select :animal_type, ['Dog', 'Cat'], include_blank: false %>
+  </div>
+
+  <div>
+    <%= form.label :hours_requested, "Hours Requested" %><br>
+    <%= form.number_field :hours_requested, in: 2..8 %>
+  </div>
+
+  <div>
+    <%= form.label :date_of_service, "Date of Service" %><br>
+    <%= form.date_field :date_of_service %>
+  </div>
+
+  <div>
+    <%= form.submit "Book Now" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', bookings_path %>
