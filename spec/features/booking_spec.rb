@@ -15,4 +15,19 @@ RSpec.feature "Bookings", type: :feature do
 
     expect(page).to have_text('Booking Created!')
   end
+
+  scenario 'User attempts to create an invalid booking' do
+    visit '/'
+
+    fill_in 'First Name', with: 'Tyler'
+    fill_in 'Last Name', with: 'Bierwirth'
+    fill_in 'Animal Name', with: 'Luna'
+    select 'Cat', from: 'Animal Type'
+    fill_in 'Hours Requested', with: 12
+    fill_in 'Date of Service', with: Date.today.to_s
+
+    click_button 'Book Now'
+
+    expect(page).to have_text('Hours requested must be less than or equal to 8')
+  end
 end
