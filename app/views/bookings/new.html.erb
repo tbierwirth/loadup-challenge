@@ -11,7 +11,7 @@
           <%= form.text_field :first_name, class: "form-control#{' is-invalid' if @booking.errors[:first_name].any?}", required: true %>
           <% if @booking.errors[:first_name].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:first_name].first %>
+              First Name <%= @booking.errors[:first_name].first %>
             </div>
           <% end %>
         </div>
@@ -21,7 +21,7 @@
           <%= form.text_field :last_name, class: "form-control#{' is-invalid' if @booking.errors[:last_name].any?}", required: true %>
           <% if @booking.errors[:last_name].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:last_name].first %>
+              Last Name <%= @booking.errors[:last_name].first %>
             </div>
           <% end %>
         </div>
@@ -31,7 +31,7 @@
           <%= form.text_field :animal_name, class: "form-control#{' is-invalid' if @booking.errors[:animal_name].any?}", required: true %>
           <% if @booking.errors[:animal_name].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:animal_name].first %>
+              Animal Name <%= @booking.errors[:animal_name].first %>
             </div>
           <% end %>
         </div>
@@ -41,7 +41,7 @@
           <%= form.select :animal_type, ['Dog', 'Cat'], {}, { class: "form-select#{' is-invalid' if @booking.errors[:animal_type].any?}", required: true } %>
           <% if @booking.errors[:animal_type].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:animal_type].first %>
+              Animal Type <%= @booking.errors[:animal_type].first %>
             </div>
           <% end %>
         </div>
@@ -51,7 +51,7 @@
           <%= form.number_field :hours_requested, in: 2..8, class: "form-control#{' is-invalid' if @booking.errors[:hours_requested].any?}", required: true %>
           <% if @booking.errors[:hours_requested].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:hours_requested].first %>
+              Hours Requested <%= @booking.errors[:hours_requested].first %>
             </div>
           <% end %>
         </div>
@@ -61,7 +61,7 @@
           <%= form.date_field :date_of_service, class: "form-control#{' is-invalid' if @booking.errors[:date_of_service].any?}", required: true %>
           <% if @booking.errors[:date_of_service].any? %>
             <div class="invalid-feedback">
-              <%= @booking.errors[:date_of_service].first %>
+              Date of Service <%= @booking.errors[:date_of_service].first %>
             </div>
           <% end %>
         </div>
