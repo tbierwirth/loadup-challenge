@@ -4,26 +4,14 @@
     <title>LoadUp Pet Sitting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <% if user_signed_in? %>
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% if current_user.admin? %>
-    <%= link_to 'Admin Page', bookings_path %>
-  <% end %>
-  <% else %>
-    <%= link_to 'Login', new_user_session_path %>
-  <% end %>
-
   <body>
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "flash #{name}") %>
-    <% end %>
-
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    
+    <div class="container mt-3">
+      <%= yield %>
+    </div>
   </body>
 </html>
