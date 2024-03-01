@@ -1,56 +1,75 @@
-<h1>New Booking</h1>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>New Booking</h2>
+    </div>
+    <div class="card-body">
+      <%= form_with model: @booking, local: true, html: { class: "needs-validation", novalidate: "" } do |form| %>
 
-<%= form_with model: @booking, html: { class: "booking-form" } do |form| %>
+        <div class="mb-3">
+          <%= form.label :first_name, "First Name", class: "form-label" %>
+          <%= form.text_field :first_name, class: "form-control#{' is-invalid' if @booking.errors[:first_name].any?}", required: true %>
+          <% if @booking.errors[:first_name].any? %>
+            <div class="invalid-feedback">
+              First Name <%= @booking.errors[:first_name].first %>
+            </div>
+          <% end %>
+        </div>
 
-  <div class="form-group">
-    <%= form.label :first_name, "First Name" %><br>
-    <%= form.text_field :first_name, class: "form-control#{' is-invalid' if @booking.errors[:first_name].any?}" %>
-    <% if @booking.errors[:first_name].any? %>
-      <div class="field-error">First Name <%= @booking.errors[:first_name].first %></div>
-    <% end %>
+        <div class="mb-3">
+          <%= form.label :last_name, "Last Name", class: "form-label" %>
+          <%= form.text_field :last_name, class: "form-control#{' is-invalid' if @booking.errors[:last_name].any?}", required: true %>
+          <% if @booking.errors[:last_name].any? %>
+            <div class="invalid-feedback">
+              Last Name <%= @booking.errors[:last_name].first %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :animal_name, "Animal Name", class: "form-label" %>
+          <%= form.text_field :animal_name, class: "form-control#{' is-invalid' if @booking.errors[:animal_name].any?}", required: true %>
+          <% if @booking.errors[:animal_name].any? %>
+            <div class="invalid-feedback">
+              Animal Name <%= @booking.errors[:animal_name].first %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :animal_type, "Animal Type", class: "form-label" %>
+          <%= form.select :animal_type, ['Dog', 'Cat'], {}, { class: "form-select#{' is-invalid' if @booking.errors[:animal_type].any?}", required: true } %>
+          <% if @booking.errors[:animal_type].any? %>
+            <div class="invalid-feedback">
+              Animal Type <%= @booking.errors[:animal_type].first %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :hours_requested, "Hours Requested", class: "form-label" %>
+          <%= form.number_field :hours_requested, in: 2..8, class: "form-control#{' is-invalid' if @booking.errors[:hours_requested].any?}", required: true %>
+          <% if @booking.errors[:hours_requested].any? %>
+            <div class="invalid-feedback">
+              Hours Requested <%= @booking.errors[:hours_requested].first %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :date_of_service, "Date of Service", class: "form-label" %>
+          <%= form.date_field :date_of_service, class: "form-control#{' is-invalid' if @booking.errors[:date_of_service].any?}", required: true %>
+          <% if @booking.errors[:date_of_service].any? %>
+            <div class="invalid-feedback">
+              Date of Service <%= @booking.errors[:date_of_service].first %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Book Now", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= form.label :last_name, "Last Name" %><br>
-    <%= form.text_field :last_name, class: "form-control#{' is-invalid' if @booking.errors[:last_name].any?}" %>
-    <% if @booking.errors[:last_name].any? %>
-      <div class="field-error">Last Name <%= @booking.errors[:last_name].first %></div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :animal_name, "Animal Name" %><br>
-    <%= form.text_field :animal_name, class: "form-control#{' is-invalid' if @booking.errors[:animal_name].any?}" %>
-    <% if @booking.errors[:animal_name].any? %>
-      <div class="field-error">Animal Name <%= @booking.errors[:animal_name].first %></div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :animal_type, "Animal Type" %><br>
-    <%= form.select :animal_type, ['Dog', 'Cat'], {}, { class: "form-control#{' is-invalid' if @booking.errors[:animal_type].any?}" } %>
-    <% if @booking.errors[:animal_type].any? %>
-      <div class="field-error">Animal Type <%= @booking.errors[:animal_type].first %></div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :hours_requested, "Hours Requested" %><br>
-    <%= form.number_field :hours_requested, in: 2..8, class: "form-control#{' is-invalid' if @booking.errors[:hours_requested].any?}" %>
-    <% if @booking.errors[:hours_requested].any? %>
-      <div class="field-error">Hours Requested <%= @booking.errors[:hours_requested].first %></div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :date_of_service, "Date of Service" %><br>
-    <%= form.date_field :date_of_service, class: "form-control#{' is-invalid' if @booking.errors[:date_of_service].any?}" %>
-    <% if @booking.errors[:date_of_service].any? %>
-      <div class="field-error">Date of Service <%= @booking.errors[:date_of_service].first %></div>
-    <% end %>
-  </div>
-
-  <div class="form-actions">
-    <%= form.submit "Book Now", class: "submit-button" %>
-  </div>
-<% end %>
+</div>

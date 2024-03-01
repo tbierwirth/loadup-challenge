@@ -1,32 +1,32 @@
-<h1>All Bookings</h1>
+<div class="container mt-4">
+  <h1 class="mb-4">All Bookings</h1>
 
-<div class="bookings-table">
-  <table>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Animal Name</th>
-        <th>Animal Type</th>
-        <th>Hours Requested</th>
-        <th>Date of Service</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @bookings.each do |booking| %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="table-light">
         <tr>
-          <td><%= booking.first_name %></td>
-          <td><%= booking.last_name %></td>
-          <td><%= booking.animal_name %></td>
-          <td><%= booking.animal_type.capitalize %></td>
-          <td><%= booking.hours_requested %></td>
-          <td><%= booking.date_of_service.strftime("%B %d, %Y") %></td>
-          <td>$<%= booking.calculate_price %></td>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Animal Name</th>
+          <th scope="col">Animal Type</th>
+          <th scope="col">Hours Requested</th>
+          <th scope="col">Date of Service</th>
+          <th scope="col">Price</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.first_name %></td>
+            <td><%= booking.last_name %></td>
+            <td><%= booking.animal_name %></td>
+            <td><%= booking.animal_type.capitalize %></td>
+            <td><%= booking.hours_requested %></td>
+            <td><%= booking.date_of_service.strftime("%B %d, %Y") %></td>
+            <td>$<%= booking.calculate_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to 'New Booking', new_booking_path, class: "new-booking-button" %>
